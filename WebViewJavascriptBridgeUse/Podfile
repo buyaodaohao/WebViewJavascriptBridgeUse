@@ -1,0 +1,4 @@
+platform :ios, '8.0'
+target 'WebViewJavascriptBridgeUse' do
+pod 'WebViewJavascriptBridge'
+end

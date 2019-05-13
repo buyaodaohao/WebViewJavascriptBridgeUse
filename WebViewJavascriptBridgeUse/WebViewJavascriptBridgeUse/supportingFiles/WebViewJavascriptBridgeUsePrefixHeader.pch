@@ -1,0 +1,19 @@
+//
+//  WebViewJavascriptBridgeUsePrefixHeader.pch
+//  WebViewJavascriptBridgeUse
+//
+//  Created by 云联智慧 on 2019/5/13.
+//  Copyright © 2019 云联智慧. All rights reserved.
+//
+
+#ifndef WebViewJavascriptBridgeUsePrefixHeader_pch
+#define WebViewJavascriptBridgeUsePrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <WebViewJavascriptBridge.h>
+#import <WKWebViewJavascriptBridge.h>
+#import "WKWebViewController.h"
+#endif /* WebViewJavascriptBridgeUsePrefixHeader_pch */

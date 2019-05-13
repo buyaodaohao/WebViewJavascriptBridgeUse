@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+            
+            <script language="javascript">
+                function setupWebViewJavascriptBridge(callback) {
+                    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+                    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+                    window.WVJBCallbacks = [callback];
+                    var WVJBIframe = document.createElement('iframe');
+                    WVJBIframe.style.display = 'none';
+                    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+                    document.documentElement.appendChild(WVJBIframe);
+                    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+                }
+            
+    setupWebViewJavascriptBridge(function(bridge) {
+                                 });
+                                         
+    function getDeviceName(){
+        //此处第一个参数对应的是OC方法名；
+        //第二个参数是js端要传给OC端的参数，不需要就传空
+        //第三个参数就是js端回调函数，用于接收OC端传回的值，以便于js端做其他处理
+WebViewJavascriptBridge.callHandler('getDeviceName',null,function(response) {
+        alert(response);
+        document.getElementById("returnValue").value = response;
+        });
+        }
+function postParamertersToOC(){
+        var params = {'Name':'小明','sex':'male','age':10,'nation':'China'};
+WebViewJavascriptBridge.callHandler('postParamertersToOC',params,function(response) {
+        alert(response);
+        document.getElementById("returnValue").value = response;
+            });
+            }
+    </script>
+        </head>
+    <body>
+        <br/>
+        <br/>
+        <br/>
+        <input id = 'getDeviceNameBtn' type="button" value="获取设备名称" onclick="getDeviceName()" />
+        <input id = 'postMessageToOC' type="button" value="JS传值给OC端" onclick="postParamertersToOC()"/>
+        <br/>
+        <br/>
+        <textarea id ="returnValue" type="value" rows="5" cols="50">
+            
+        </textarea>
+    </body>
+    </html>
